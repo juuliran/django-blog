@@ -1,18 +1,22 @@
+{% load static %}
 <html>
     <head>
         <title>Juulin blogi</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&display=swap">
     </head>
     <body>
+        <h1>JUULI</h1>
         <div>
-            <h1>JUULIN BLOGI</h1>
-        </div>
-        <div>
-            <h2>Ensimmäinen postaus!</h2>
-            <p>testi testi testi</p>
-        </div>
-        <div>
-            <h3>Toinen postaus!</h3>
-            <p>Hi there!</p>
+            {% for post in posts %}
+                <div>
+                    <p>{{ post.created_date }}</p>
+                    <h1>{{ post.title }}</h1>
+                    <p>{{ post.text|linebreaksbr }}</p>
+                </div>
+             {% endfor %}
         </div>
     </body>
 </html>
